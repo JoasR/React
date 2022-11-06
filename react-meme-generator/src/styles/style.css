@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --lin-purple: linear-gradient(90.41deg, #711f8D 1.14%, #a818da 100%);
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-container{
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    background: var(--lin-purple);
+    color: #fff;
+    align-items: center;
+    height: 80px;
+    padding: 20px;
+}
+
+.nav-troll-image{
+    width: 32px;
+}
+
+.nav-title{
+    margin-right: auto;
+    margin-left: 20px;
+    font-size: 1.25rem;
+}
+
+.nav-course{
+    font-size: 0.75rem;
+}
+
+main{
+    padding: 36px;
+}
+
+.meme-form{
+    display: grid;
+    grid-template: 40px 40px / 1fr 1fr;
+    gap: 20px;
+}
+
+.meme-form-input{
+    border-radius: 5px;
+    text-indent: 7px;
+    font-family: 'Karla', sans-serif;
+}
+
+.meme-form-button{
+    grid-column: 1 / -1;
+    border-radius: 5px;
+    background: var(--lin-purple);
+    color: #fff;
+    font-family: 'Karla', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.meme-image{
+    width: 100%;
+    margin-top: 20px;
+    max-height: 425px;
+    object-fit: cover;
+}
