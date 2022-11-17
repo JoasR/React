@@ -2,10 +2,13 @@ import React from "react";
 import Die from "./components/Die"
 import {nanoid} from "nanoid"
 import Confetti from "react-confetti";
+import Timer from "./components/Timer";
 
 function App(){
   const [dice, setDice] = React.useState(allNewDice())
   const [tenzies, setTenzies] = React.useState(false)
+  const [rollCount, setRollCount] = React.useState(0)
+  const [stopTimer, setStopTimer] = React.useState(false)
 
   React.useEffect(() => {
     //Check if all dice isHeld property is true
@@ -15,10 +18,12 @@ function App(){
 
     if(allHeld && allSameValue){
       setTenzies(true)
+      setStopTimer(true)
     }
 
     if(!allHeld || !allSameValue){
       setTenzies(false)
+      setStopTimer(false)
     }
   }, [dice])
 
@@ -45,9 +50,11 @@ function App(){
           return die.isHeld ? die : generateNewDie()
         })
       })
+      setRollCount(oldRollCount => oldRollCount +1)
     } else {
       setTenzies(false)
       setDice(allNewDice())
+      setRollCount(0)
     }
   }
   
@@ -74,6 +81,8 @@ function App(){
         {diceElements}
       </div>
       <div onClick={rollDice} className="roll-dice-btn">{tenzies ? "New Game" : "Roll"}</div>
+      <h1 className="title">Roll Count: {rollCount}</h1>
+      <Timer stopTimer={stopTimer} tenzies={tenzies} />
     </main>  
   )
 }
