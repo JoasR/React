@@ -3,15 +3,28 @@ import { decode } from "html-entities"
 import { nanoid } from "nanoid"
 
 export const Question = (props) => {
-    const allTriviaAnswers = [props.correctAnswer, ...props.incorrectAnswers]
     
-        let shuffledTriviaAnswers = allTriviaAnswers.sort(function(){
-            return Math.random() - 0.5
-        })
+    const [selectedAnswer, setSelectedAnswer] = React.useState("")
 
-        const answerElements = shuffledTriviaAnswers.map(answer => {
-            return <button key={nanoid()} className="answer">{answer}</button>
-        })
+    function selectAnswer(answer){
+        if(selectedAnswer !== answer){
+            setSelectedAnswer(answer)
+        } else {
+            setSelectedAnswer("")
+        }
+    }
+
+    const answerElements = props.allTriviaAnswers.map(answer => {
+        return <button onClick={() => selectAnswer(answer)} key={nanoid()} className={selectedAnswer === answer ? "answer answerSelected" : "answer"}>{answer}</button>
+    })
+    function checkAnswer(){
+        if(selectedAnswer === props.correctAnswer){
+            console.log("correct")
+        }
+        else{
+            console.log("wrong");
+        }
+    }
 
     return (
         <div className="question-container">
@@ -19,6 +32,7 @@ export const Question = (props) => {
             <div className="answer-container">
                 {answerElements}
             </div>
+            <button onClick={checkAnswer}>check answer</button>
             <hr className="line"/>
         </div>
     )

@@ -10,7 +10,6 @@ export const App = () => {
     }
 
     const[allTriviaQuestions, setAllTriviaQuestions] = React.useState([])
-
     React.useEffect(() => {
         async function getAllTriviaQuestions(){
             const res = await fetch("https://opentdb.com/api.php?amount=5&type=multiple")
@@ -18,10 +17,15 @@ export const App = () => {
             setAllTriviaQuestions(data.results)
         }
         getAllTriviaQuestions()
-    }, [0])
+    }, [])
+    
 
     const questionElements = allTriviaQuestions.map(question => {
-        return <Question key={nanoid()} triviaQuestion={question.question} incorrectAnswers={question?.incorrect_answers} correctAnswer={question?.correct_answer}/>
+        const allTriviaAnswers = [question?.correct_answer, ...question?.incorrect_answers]
+        let shuffledTriviaAnswers = allTriviaAnswers.sort(function(){
+            return Math.random() - 0.5
+        })
+        return <Question key={nanoid()} triviaQuestion={question.question} allTriviaAnswers={shuffledTriviaAnswers} incorrectAnswers={question?.incorrect_answers} correctAnswer={question?.correct_answer}/>
     })
     
     return(

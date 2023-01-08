@@ -114,3 +114,7 @@ hr.line{
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+.answerSelected{
+    background-color: green;
+}
