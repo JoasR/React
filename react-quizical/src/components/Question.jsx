@@ -3,36 +3,40 @@ import { decode } from "html-entities"
 import { nanoid } from "nanoid"
 
 export const Question = (props) => {
-    
-    const [selectedAnswer, setSelectedAnswer] = React.useState("")
 
-    function selectAnswer(answer){
-        if(selectedAnswer !== answer){
-            setSelectedAnswer(answer)
-        } else {
-            setSelectedAnswer("")
+    const [questionSelected, setQuestionSelected] = React.useState(props.selectedAnswer)
+
+    const setAnswer = (answer) => {
+        if(answer !== props.selectedAnswer){
+            props.handleSelectedAnswer(props.id, answer)
+            setQuestionSelected(answer)
+        }
+        else {
+            props.handleSelectedAnswer(props.id, "")
+            setQuestionSelected("")
         }
     }
 
-    const answerElements = props.allTriviaAnswers.map(answer => {
-        return <button onClick={() => selectAnswer(answer)} key={nanoid()} className={selectedAnswer === answer ? "answer answerSelected" : "answer"}>{answer}</button>
+    const answerElement = props.allTriviaAnswers.map(answer => {
+        let styleId = null
+        if(props.playAgain){
+            if(props.correctAnswer === answer){
+                styleId = "correct"
+            } else if(props.selectedAnswer === answer){
+                styleId = "incorrect"
+            } else {
+                styleId = "not-selected"
+            }
+        }
+        return <button id={styleId} disabled={props.playAgain} onClick={() => setAnswer(answer)} key={nanoid()} className={questionSelected === answer ? "answer answerSelected" : "answer"}>{decode(answer)}</button>
     })
-    function checkAnswer(){
-        if(selectedAnswer === props.correctAnswer){
-            console.log("correct")
-        }
-        else{
-            console.log("wrong");
-        }
-    }
 
     return (
         <div className="question-container">
             <h2 className="question">{decode(props.triviaQuestion)}</h2>
             <div className="answer-container">
-                {answerElements}
+                {answerElement}
             </div>
-            <button onClick={checkAnswer}>check answer</button>
             <hr className="line"/>
         </div>
     )
