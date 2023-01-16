@@ -5,7 +5,10 @@ const verifyToken = (req, res, next) => {
     if(authHeader){
         const token = authHeader.split(" ")[1] //take second element which is the token, because in the header its says: Bearer <token>
         jwt.verify(token, process.env.JWT_SEC, (err, user) => {
-            err && res.status(403).json("Token is not valid!")
+            if(err) {
+                res.status(403).json("Token is not valid!")
+                return
+            }
             req.user = user;
             next()
         })
