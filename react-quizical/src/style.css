@@ -144,3 +144,23 @@ button:disabled{
 #not-selected{
     color: gray;
 }
+
+.config-container{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.config-label{
+    font-size: 18px;
+    color: #293264
+}
+
+.config-select{
+    margin: 10px 0px;
+    border: 1px solid #293264;
+    border-radius: 5px;
+    height: 30px;
+    padding-left: 5px;
+    color: #293264
+}
