@@ -160,7 +160,7 @@ export const App = () => {
                         <select name="type" value={type} onChange={handleChange} className="config-select">
                             <option disabled>Choose the type of questions (multiple choise, true/false)</option>
                             <option value="0">Any Type</option>
-                            <option value="mutliple">Multiple Choise</option>
+                            <option value="multiple">Multiple Choise</option>
                             <option value="boolean">True / False</option>
                         </select>
                     </div>
