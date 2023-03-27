@@ -1,7 +1,9 @@
 import styled from "styled-components"
 import AccountHeader from "./components/AccountHeader"
 import Fps from "./components/Fps"
+import Friends from "./components/Friends"
 import Navbar from "./components/Navbar"
+import SocialHeader from "./components/SocialHeader"
 import Time from "./components/Time"
 import "./style.css"
 
@@ -12,6 +14,7 @@ const Container = styled.div`
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 40px;
 `
 
 function App() {
@@ -24,6 +27,8 @@ function App() {
         <Navbar />
         <AccountHeader />
       </HeaderContainer>
+      <SocialHeader />
+      <Friends />
     </Container>
   )
 }

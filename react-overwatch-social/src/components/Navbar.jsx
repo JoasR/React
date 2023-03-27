@@ -26,8 +26,8 @@ const ListItem = styled.ul`
     border: 2px solid transparent;
 
     &:hover{
-        border: 2px solid #30D5C8;
-        background-color: #045c5a;
+        border: ${props => props.active ? "" : "2px solid #30D5C8"} ;
+        background-color: ${props => props.active ? "" : "#045c5a"};
     }
 `
 
