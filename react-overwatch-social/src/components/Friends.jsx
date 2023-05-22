@@ -50,6 +50,7 @@ const AddFriendsButton = styled.div`
     border: 2px solid transparent;
     border-radius: 3px;
     transition: transform ease-in 1;
+    align-items: center;
 
     &:hover{
         animation: ${glow} 2.5s ease-in-out infinite;
@@ -86,6 +87,7 @@ const DropDownMenu = styled.div`
     border-radius: 3px;
     width: 100%;
     padding: 5px;
+    z-index: 1;
 `
 
 const DropDownItem = styled.li`
@@ -108,11 +110,6 @@ const Circle = styled.span`
 
 const StatusText = styled.p`
     
-`
-
-const FriendsContainer = styled.div`
-    /* border: solid 3px white; */
-    height: 300px;
 `
 
 
@@ -166,9 +163,6 @@ const Friends = () => {
                 </DropDown>
             </AddButtonsContainer>
         </TitleContainer>
-        <FriendsContainer>
-
-        </FriendsContainer>
     </Container>
   )
 }

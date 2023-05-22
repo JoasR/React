@@ -5,6 +5,7 @@ import Friends from "./components/Friends"
 import Navbar from "./components/Navbar"
 import SocialHeader from "./components/SocialHeader"
 import Time from "./components/Time"
+import FriendCards from "./components/FriendCards"
 import "./style.css"
 
 const Container = styled.div`
@@ -29,6 +30,7 @@ function App() {
       </HeaderContainer>
       <SocialHeader />
       <Friends />
+      <FriendCards />
     </Container>
   )
 }
