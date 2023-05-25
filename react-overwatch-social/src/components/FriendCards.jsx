@@ -9,6 +9,7 @@ const FriendsContainer = styled.div`
     flex-wrap: wrap;
     flex-direction: column;
     margin: 0px 50px;
+    z-index: 0;
 `
 
 const FriendCards = () => {

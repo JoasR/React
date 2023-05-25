@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import heroesOfTheStormImage from "../assets/overwatch social/heroes-of-the-storm.webp"
 import overwatchImage from "../assets/overwatch social/overwatch.webp"
@@ -14,6 +14,12 @@ const FriendCardContainer = styled.div`
     margin: 3px 10px;
     position: relative;
     border-radius: 3px;
+    z-index: 0;
+
+    &:hover{
+        transform: scale(1.05);
+        border: 3px solid white;
+    }
 `
 const VerticalLine = styled.span`
     position: absolute;
@@ -38,6 +44,11 @@ const VerticalLine = styled.span`
 const GameImage = styled.img`
     margin: 5px 5px 5px 10px;
     border-radius: 3px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-self: center;
+    justify-self: center;
 `
 
 const PlayerInfo = styled.div`
@@ -57,10 +68,16 @@ const CurrentActivity = styled.h3`
     text-transform: uppercase;
     font-size: 0.8rem;
     font-weight: 600;
-    color: rgba(0, 0, 0, 0.75)
+    color: rgba(0, 0, 0, 0.75);
 `
 
 const FriendCard = ({name, status, game, currentActivity, isFav}) => {
+    const [isdropDownOpen, setIsDropDownOpen] = useState(false);
+
+    const toggleDropDown = () => {
+        setIsDropDownOpen(!isdropDownOpen)
+    }
+
     let gameImage = battle_netImage
     if(game === "hearthstone"){
         gameImage = hearthstoneImage
@@ -73,7 +90,7 @@ const FriendCard = ({name, status, game, currentActivity, isFav}) => {
     }
 
   return (
-    <FriendCardContainer>
+    <FriendCardContainer onClick={toggleDropDown}>
         <VerticalLine status={status}></VerticalLine>
         <GameImage src={gameImage}/>
         <PlayerInfo>

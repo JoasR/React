@@ -7,6 +7,9 @@ import SocialHeader from "./components/SocialHeader"
 import Time from "./components/Time"
 import FriendCards from "./components/FriendCards"
 import "./style.css"
+import FriendsArrowsPag from "./components/FriendsArrowsPag"
+import NumPad from "./components/NumPad"
+import Escape from "./components/Escape"
 
 const Container = styled.div`
   margin: 30px;
@@ -31,6 +34,9 @@ function App() {
       <SocialHeader />
       <Friends />
       <FriendCards />
+      <FriendsArrowsPag />
+      <NumPad />
+      <Escape />
     </Container>
   )
 }

@@ -5,6 +5,9 @@
 }
 
 body{
-    background-color: lightgray;
+    background: linear-gradient(45deg, rgba(2, 0, 36, 1) 0%, rgba(146, 146, 174, 1) 0%, rgba(240, 238, 211, 1) 90%);
+    background-repeat: no-repeat;
     font-family: "Mono Space", monospace;
+    height: 100vh;
+    overflow-y: hidden;
 }

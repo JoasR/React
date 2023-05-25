@@ -75,6 +75,7 @@ const DropDown = styled.div`
     font-size: 1.3rem;
     position: relative;
     border-radius: 3px;
+    z-index: 2;
 `
 
 const DropDownMenu = styled.div`
@@ -96,7 +97,11 @@ const DropDownItem = styled.li`
     align-items: center;
     width: 100%;
     background-color: ${props => props.selected === props.status ? "#171717" : "inherit"};
-    color: ${props => props.selected === props.status ? "#fff" : "inherit"}
+    color: ${props => props.selected === props.status ? "#fff" : "inherit"};
+
+    &:hover{
+        background-color: ${props => (props.selected === props.status) && props.dropDownOpen ? "#171717" : "rgba(23, 23, 23, 0.2)"};
+    }
 `
 
 const Circle = styled.span`
@@ -148,14 +153,14 @@ const Friends = () => {
                     {isDropDownOpen && (
                         <DropDownMenu>
                             {onlineOptions.map(option => (
-                                <DropDownItem selected={selectedStatus.status} status={option.status} onClick={() => handleOptionClick(option)} key={option.status}>
+                                <DropDownItem dropDownOpen={isDropDownOpen} selected={selectedStatus.status} status={option.status} onClick={() => handleOptionClick(option)} key={option.status}>
                                     <Circle color={option.statusColor}></Circle>
                                     <StatusText>{option.status}</StatusText>
                                 </DropDownItem>
                             ))}
                         </DropDownMenu>
                     )}
-                    <DropDownItem selected={selectedStatus}>
+                    <DropDownItem style={{backgroundColor: "#fff"}} dropDownOpen={isDropDownOpen} selected={selectedStatus}>
                         <Circle color={selectedStatus.statusColor}></Circle>
                         <StatusText>{selectedStatus.status}</StatusText>
                         <ExpandMore style={{marginLeft: "auto"}}/>
